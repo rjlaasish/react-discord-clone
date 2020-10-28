@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./style.css";
 import AddIcon from "@material-ui/icons/Add";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
@@ -9,10 +9,21 @@ import CallIcon from "@material-ui/icons/Call";
 import { Avatar } from "@material-ui/core";
 import MicIcon from "@material-ui/icons/Mic";
 import HeadsetIcon from "@material-ui/icons/Headset";
-import SettingsIcon from '@material-ui/icons/Settings';
-
+import SettingsIcon from "@material-ui/icons/Settings";
+import { Auth } from "../../ContextApi/authContext";
+import firebase from "../../firebase";
 
 export default function Sidebar() {
+  const { state, dispatch } = useContext(Auth);
+
+  const logout = () => {
+    firebase.logOut();
+    return dispatch({
+        type: "LOGOUT",
+        payload: {}
+    });
+}
+
   return (
     <div className="sidebar">
       {/* top_part */}
@@ -58,7 +69,7 @@ export default function Sidebar() {
       </div>
 
       <div className="sidebar__profile">
-        <Avatar />
+        <Avatar onClick={() => dispatch({ type: "LOGOUT" })} />
         <div className="sidebar_profileInfo">
           <h3>@aasish_rijal</h3>
           <p>#this is my id</p>
@@ -66,7 +77,7 @@ export default function Sidebar() {
         <div className="sidebar_profileIcons">
           <MicIcon />
           <HeadsetIcon />
-          <SettingsIcon/>
+          <SettingsIcon />
         </div>
       </div>
     </div>
