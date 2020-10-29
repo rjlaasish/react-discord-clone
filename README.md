@@ -29,7 +29,7 @@ Following UI is just clone of Discord web app. All the design credits and assets
 
   
 
-## Demo Link : ` Comming soon ... `
+## Demo Link : ` https://react-discord-clone-a163a.web.app/  ` or <a  href="https://react-discord-clone-a163a.web.app/">CLICK HERE</a>
 
   
 
