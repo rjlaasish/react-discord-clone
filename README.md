@@ -39,7 +39,7 @@ Following UI is just clone of Discord web app. All the design credits and assets
 
 # App Previews:
 
-| **Landing Page** | <img  src="src/assets/1.png"  alt="login page"  height="350"  /> |
-|**Add Channel Screen**|<img  src="src/assets/2.png"  alt="app detail screen"  height="350"  />|
-| **Message Typing Screen**| <img  src="src/assets/3.png"  alt="app detail screen"  height="350"  /> |
-|**Message Sent Screen**|<img  src="src/assets/4.png"  alt="app detail screen"  height="350"  />|
+  **Landing Page**  <img  src="src/assets/1.png"  alt="login page"  height="350"  />  
+ **Add Channel Screen** <img  src="src/assets/2.png"  alt="app detail screen"  height="350"  /> 
+  **Message Typing Screen**  <img  src="src/assets/3.png"  alt="app detail screen"  height="350"  />  
+ **Message Sent Screen** <img  src="src/assets/4.png"  alt="app detail screen"  height="350"  /> 
