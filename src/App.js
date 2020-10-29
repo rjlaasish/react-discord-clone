@@ -1,24 +1,44 @@
-import { FormatListNumberedRtl } from "@material-ui/icons";
-import { useContext } from "react";
+import React, {useEffect} from "react";
 import "./App.css";
-import Chat from "./components/Chat/chat";
-import Login from "./components/Login/Login";
+import {useDispatch, useSelector} from "react-redux";
+import {login, logout, selectUser} from "./features/userSlice";
+import {auth} from "./firebase";
+import Chat from './components/Chat/chat'
 import Sidebar from "./components/Sidebar/Sidebar";
-import { Auth } from "./ContextApi/authContext";
+import Login from "./components/Login/Login";
 
 function App() {
-  const { state, dispatch } = useContext(Auth);
-  console.log(state);
+  const user = useSelector(selectUser);
+  const dispatch=useDispatch(selectUser);
+  useEffect(()=>{
+    auth.onAuthStateChanged((authUser)=>{
+      console.log("user is ", authUser)
+      if (authUser){
+        //user is logged in
+        dispatch(login({
+          uid:authUser.uid,
+          photo:authUser.photoURL,
+          email:authUser.email,
+          displayName:authUser.displayName
+        }))
+      }else {
+        //user is not logged in
+        dispatch(logout());
+      }
+    })
+  },[dispatch])
   return (
     <div className="app">
-       {state.user ? (
+      {user ? (
         <>
+          {/*Sidebar*/}
           <Sidebar />
-          <Chat />
+          {/*Chat*/}
+          <Chat/>
         </>
       ) : (
         <Login />
-      )} 
+      )}
     </div>
   );
 }

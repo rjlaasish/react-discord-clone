@@ -1,17 +1,14 @@
-import React, { useContext } from "react";
+import React from "react";
 import "./Login.css";
 import Button from "@material-ui/core/Button";
-import { Auth } from "../../ContextApi/authContext";
-import firebase from "../../firebase";
-function Login() {
-  const { state, dispatch } = useContext(Auth);
+import {auth, provider} from "../../firebase";
 
-  const login = async () => {
-    var response = await firebase.signIn();
-    await dispatch({type:"LOGIN",payload:response})
-    
+
+function Login(props) {
+  const signIn = () => {
+      //google login authentication
+      auth.signInWithPopup(provider).catch((err) => alert(err.message));
   };
-
   return (
     <div className="login">
       <div className="login__logo">
@@ -20,7 +17,7 @@ function Login() {
           alt="logo"
         />
       </div>
-      <Button onClick={login}>Sign In with Google</Button>
+      <Button onClick={signIn}>Sign In with Google</Button>
     </div>
   );
 }
